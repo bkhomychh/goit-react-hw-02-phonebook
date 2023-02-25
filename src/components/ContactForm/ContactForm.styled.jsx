@@ -9,10 +9,10 @@ export const Form = styled.form`
   gap: 20px;
   width: 300px;
 
-  font-size: 20px;
+  font-size: ${({ theme }) => `3px solid ${theme.fontSize.textPrimary}`};
   font-weight: 500;
 
-  border: 3px solid rgb(0, 4, 255);
+  border: ${({ theme }) => `2px solid ${theme.color.bgAccent}`};
 `;
 
 export const Label = styled.label`
@@ -21,16 +21,19 @@ export const Label = styled.label`
   flex-direction: column;
   gap: 10px;
 
-  input {
-    padding: 5px 10px;
-    transition: all 250ms ease-in-out;
+  font-size: ${({ theme }) => `3px solid ${theme.fontSize.headingPrimary}`};
 
-    border-color: #d0cfcffb;
+  input {
+    padding: 10px 20px;
+
     outline: none;
+    border: ${({ theme }) => `2px solid ${theme.color.bgSecondary}`};
+
+    transition: ${({ theme }) =>
+      `all 250ms ${theme.transition.primaryCubicBezier}`};
 
     &:focus {
-      box-shadow: 0 0 3px #4640ff;
-      border-color: #40e2ff;
+      border: ${({ theme }) => `2px solid ${theme.color.bgAccent}`};
     }
   }
 `;
@@ -42,14 +45,15 @@ export const AddBtn = styled.button`
 
   text-transform: uppercase;
   font-weight: 700;
-  background-color: white;
+  background-color: ${({ theme }) => theme.color.bgPrimary};
+  border: ${({ theme }) => `2px solid ${theme.color.bgSecondary}`};
   border-radius: 20px;
 
   cursor: pointer;
   transition: all 250ms ease-in-out;
 
   &:hover {
-    background-color: #01d464;
-    color: white;
+    background-color: ${({ theme }) => theme.color.bgSuccess};
+    color: ${({ theme }) => theme.color.textAccent};
   }
 `;

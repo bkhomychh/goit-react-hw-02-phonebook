@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 export const Contacts = styled.ul`
-  padding-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  width: 400px;
+  max-width: 50%;
 
-  font-size: 18px;
+  font-size: ${({ theme }) => theme.fontSize.textSecondary};
 `;
