@@ -19,14 +19,11 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const formattedName = name.toLowerCase();
-    const isExisted = this.state.contacts.some(
-      contact => contact.name.toLowerCase() === formattedName
-    );
+    const isNew = !this.checkContactExistence(name);
 
-    if (isExisted) {
+    if (!isNew) {
       alert(name + ' is already in contacts.');
-      return isExisted;
+      return isNew;
     }
 
     this.setState(({ contacts }) => {
@@ -41,13 +38,21 @@ export class App extends Component {
       };
     });
 
-    return isExisted;
+    return isNew;
   };
 
   deleteContact = id => {
     this.setState({
       contacts: this.state.contacts.filter(contact => contact.id !== id),
     });
+  };
+
+  checkContactExistence = name => {
+    const formattedName = name.toLowerCase();
+
+    return this.state.contacts.some(
+      contact => contact.name.toLowerCase() === formattedName
+    );
   };
 
   updateState = searchQuery => {

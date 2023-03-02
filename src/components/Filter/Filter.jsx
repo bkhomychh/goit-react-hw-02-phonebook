@@ -6,6 +6,7 @@ import { Label, SearchField } from './Filter.styled';
 export class Filter extends Component {
   static propTypes = {
     searchQuery: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
   };
 
   handleChange = ({ target }) => {

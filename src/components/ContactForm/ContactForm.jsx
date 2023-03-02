@@ -28,8 +28,8 @@ export class ContactForm extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
 
-    const isCreated = !this.props.onSubmit(this.state);
-    isCreated && this.resetState();
+    const wasAdded = this.props.onSubmit(this.state);
+    wasAdded && this.resetState();
   };
 
   render() {
